@@ -1124,10 +1124,15 @@ the specific language governing permissions and limitations under the Apache Lic
 
         // abstract
         positionDropdown: function() {
+            var ieWidthFix = 0;
+            if ($.browser.msie  && parseInt($.browser.version, 10) === 7) {
+                ieWidthFix = 2;
+            }
+            
             var $dropdown = this.dropdown,
                 offset = this.container.offset(),
                 height = this.container.outerHeight(false),
-                width = this.container.outerWidth(false),
+                width = this.container.outerWidth(false) - ieWidthFix,
                 dropHeight = $dropdown.outerHeight(false),
                 viewPortRight = $(window).scrollLeft() + $(window).width(),
                 viewportBottom = $(window).scrollTop() + $(window).height(),
